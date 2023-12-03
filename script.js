@@ -11,7 +11,7 @@ function addTask(){
         let currentDate = new Date(); 
         let month = currentDate.getMonth() + 1;
         let year = currentDate.getFullYear();
-        
+       
         li.innerHTML = `${inputBox.value} - ${month}/${year}`;
         let span = deleteButton(li);
         li.appendChild(span);
@@ -19,8 +19,7 @@ function addTask(){
         inputBox.value = '';
         saveData();
         showAlert();
-        
-        
+ 
     }
     
 }
@@ -92,7 +91,15 @@ function showAlert() {
     }, 2000);
 }
 
+function openInstructionsModal() {
+    const modal = document.getElementById("instructionsModal");
+    modal.style.display = "block";
+}
 
+function closeInstructionsModal() {
+    const modal = document.getElementById("instructionsModal");
+    modal.style.display = "none";
+}
 
 loadSavedTasks();
 const changeMode = ()=> document.body.classList.toggle("dark-mode") 
