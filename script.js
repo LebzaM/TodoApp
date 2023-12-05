@@ -62,6 +62,8 @@ function saveData() {
 function searchTask() {
     const query = searchInput.value.toLowerCase().trim();
     const liElements = document.querySelectorAll("#list-container li");
+    
+    
 
     liElements.forEach((li) => {
         const taskText = li.textContent.toLowerCase();
@@ -77,11 +79,13 @@ function loadSavedTasks() {
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     savedTasks.forEach((task) => {
         let li = document.createElement("li");
-        li.innerHTML = task;
+        li.innerText = task;
         let span = deleteButton(li);
         li.appendChild(span);
         list.appendChild(li);
     });
+
+   
 }
 
 function showAlert() {
@@ -100,6 +104,27 @@ function closeInstructionsModal() {
     const modal = document.getElementById("instructionsModal");
     modal.style.display = "none";
 }
-
+//remove innerHTMl
 loadSavedTasks();
-const changeMode = ()=> document.body.classList.toggle("dark-mode") 
+
+let darkMode = false;
+
+function changeMode() {
+    const body = document.body;
+    const sunIcon = document.querySelector('.sun');
+    const moonIcon = document.querySelector('.moon');
+
+    darkMode = !darkMode;
+
+    if (darkMode) {
+        body.classList.add('dark-mode');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'inline';
+    } else {
+        body.classList.remove('dark-mode');
+        sunIcon.style.display = 'inline';
+        moonIcon.style.display = 'none';
+    }
+}
+
+ 
